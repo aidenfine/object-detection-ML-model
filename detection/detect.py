@@ -11,7 +11,7 @@ from termcolor import colored, cprint
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Object detection using DETR model.")
 parser.add_argument("-f", "--file_path", type=str, required=False, help="File path of the image")
-parser.add_argument("-i", "--image_url", type=str, required=False, help="URL of the image to process")
+parser.add_argument("-u", "--image_url", type=str, required=False, help="URL of the image to process")
 args = parser.parse_args()
 
 
