@@ -1,3 +1,3 @@
 ### Start
 
-run `activate virtual env source .env/bin/activate`
+run `source .env/bin/activate` to activate virtual env
