@@ -2,13 +2,30 @@ from transformers import DetrImageProcessor, DetrForObjectDetection
 import torch
 from PIL import Image
 import requests
+import argparse
+from termcolor import colored, cprint
 
 ##  activate virtual env -> source .env/bin/activate
 
 
-url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKGiOS-GoCuHLPeg5IuVxgM9yOEYvHx3ibDXmT_Tf0zzqQB0r"
-image = Image.open(requests.get(url, stream=True).raw).convert("RGB")
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description="Object detection using DETR model.")
+parser.add_argument("-f", "--file_path", type=str, required=False, help="File path of the image")
+parser.add_argument("-i", "--image_url", type=str, required=False, help="URL of the image to process")
+args = parser.parse_args()
 
+
+# Check if either file path or image URL is provided
+if args.file_path:
+    # Load image from file path
+    image = Image.open(args.file_path).convert("RGB")
+elif args.image_url:
+    # Load image from URL
+    image = Image.open(requests.get(args.image_url, stream=True).raw).convert("RGB")
+else:
+    # If neither file path nor image URL is provided, print an error message
+    cprint("Please use -f or -u to specify a file path or url link",  "red")
+    exit(1)
 
 
 
