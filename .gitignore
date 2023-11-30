@@ -11,7 +11,7 @@ settings.py
 # Distribution / packaging
 .Python
 .env.local
-env/
+.env/
 build/
 develop-eggs/
 dist/
